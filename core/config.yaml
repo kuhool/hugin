@@ -1,0 +1,58 @@
+# github.com/flipped-aurora/gin-vue-admin/server Global Configuration
+
+yxGin:
+  name: yx-gin
+  version: v0.0.1
+zap:
+  level: info
+  format: console
+  prefix: "[yxGin]"
+  director: log
+  show-line: true
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  log-in-console: true
+  retention-day: -1
+
+system:
+  env: local # 修改为public可以关闭路由日志输出
+  addr: 8001
+  db-type: mysql
+  oss-type: local # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-redis: false # 使用redis
+  use-mongo: false     # 使用mongo
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  iplimit-count: 15000
+  #  IP限制一个小时
+  iplimit-time: 3600
+  #  路由全局前缀
+  router-prefix: ""
+  #  严格角色模式 打开后权限将会存在上下级关系
+  use-strict-auth: false
+mysql:
+  prefix: ""
+  port: "3306"
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  db-name: jmy_hotel
+  username: yxadmin
+  password: "yxadmin"
+  path: 10.2.1.82
+  engine: ""
+  log-mode: error
+  max-idle-conns: 10
+  max-open-conns: 100
+  singular: false
+  log-zap: false
+jwt:
+  signing-key: a2016f80-a229-48a1-83e3-222951f2439f
+  expires-time: 7d
+  buffer-time: 1d
+  issuer: qmPlus
+
+captcha:
+  key-long: 1
+  img-width: 240
+  img-height: 80
+  open-captcha: 0
+  open-captcha-timeout: 3600
